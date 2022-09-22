@@ -1,0 +1,34 @@
+.pokemon-image{
+    width: 70%;
+    position:relative;
+    top: -45px;
+
+}
+.pokemon-name{
+    margin-top: 15px;
+    font-family: 'Kanit', sans-serif;
+}
+.title-box{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:space-between
+    
+}
+
+.type-box{
+    position:relative;
+    top:-55px
+}
+
+.stat-box{
+    display:flex;
+    align-items: center;
+    justify-content:space-evenly;
+    position: relative;
+    top: -47px;
+}
+.stat-row{
+    display:flex;
+
+}
