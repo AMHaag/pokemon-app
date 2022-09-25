@@ -1,12 +1,27 @@
 .pokemon-image{
     width: 70%;
+    max-width: 200px;
     position:relative;
     top: -45px;
+    
 
+}
+.index-number{
+    position: relative;
+    bottom: 81px;
+    left: 120px;
+    font-family:'Carter One', cursive;
+    font-size: 1.5em;
+    text-shadow: 1px 5px 3px black;
+}
+.pokemon-box{
+    max-height:230px;
 }
 .pokemon-name{
     margin-top: 15px;
     font-family: 'Kanit', sans-serif;
+    z-index: 1;
+    text-shadow:1px 5px 3px black;
 }
 .title-box{
     display: flex;
@@ -18,7 +33,12 @@
 
 .type-box{
     position:relative;
-    top:-55px
+    
+
+}
+
+.type-icon{
+    box-shadow: 2px 3px 3px black;
 }
 
 .stat-box{
@@ -26,7 +46,12 @@
     align-items: center;
     justify-content:space-evenly;
     position: relative;
-    top: -47px;
+    /* top: -47px; */
+}
+@media only screen and (min-width: 600px) {
+    .stat-box{
+        justify-content: center;
+    }
 }
 .stat-row{
     display:flex;

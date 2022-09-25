@@ -49,7 +49,7 @@ IconFile=Steel;
 
   return (
     <div>
-      <img src={IconFile} alt={altText} style={size}/>
+      <img src={IconFile} alt={altText} style={size} className='type-icon'/>
     </div>
   );
 }
