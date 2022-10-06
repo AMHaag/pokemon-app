@@ -1,9 +1,10 @@
-import './App.css';
-import PokemonInspect from './components/PokemonInspect';
-import AppNavBar from './components/AppNavBar';
-import SearchDrawer from './components/SearchDrawer';
 import { useState } from 'react';
-import { Input } from '@mui/material';
+import './App.css';
+import AppNavBar from './components/AppNavBar';
+import ExplorerView from './components/ExplorerView';
+import SearchDrawer from './components/SlideOvers/SearchDrawer';
+import { SpeedDial } from './components/SpeedDial';
+
 function App() {
   const [currentIndex, setCurrentIndex] = useState(6);
   const [showSearchDrawer, toggleSearchDrawer] = useState(true);
@@ -18,19 +19,17 @@ function App() {
 
   return (
     <div className='App'>
-      <PokemonInspect
+      <ExplorerView
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       />
-      <Input
-        placeholder='index search'
-        components='input'
-        onChange={handleChange}
-      />
-      <SearchDrawer show={showSearchDrawer} toggle={toggleSearchDrawer} />
-      <AppNavBar
-        showSearchDrawer={showSearchDrawer}
-        toggleSearchDrawer={toggleSearchDrawer}
+      <AppNavBar />
+      <SpeedDial search={toggleSearchDrawer} />
+      <SearchDrawer
+        show={showSearchDrawer}
+        toggle={toggleSearchDrawer}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
       />
     </div>
   );

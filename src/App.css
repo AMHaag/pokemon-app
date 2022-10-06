@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
 
+html{
+    background-color: #282c34;
+}
+
 .App {
   text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
+  width:100vw;
   color:#ffffff;
   font-family: 'Kanit', sans-serif;
+  position: fixed;
 }
 
 .App-logo {
