@@ -3,7 +3,12 @@ import './ExplorerView.styles.css';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Stack from '@mui/material/Stack';
-import { TypeIcon, StatBlock, AvatarLarge } from '../utils';
+import {
+  TypeIcon,
+  StatBlock,
+  AvatarLarge,
+  TypeModifierDisplay,TypeChip
+} from '../utils';
 import capitalizeFirstLetter from '../../helpers/capitalize';
 
 function ExplorerView(props) {
@@ -42,6 +47,10 @@ function ExplorerView(props) {
   }
   let name = capitalizeFirstLetter(pokemonData.name);
   let number = pokemonData.id;
+  const primaryType = pokemonData.types[0].type.name;
+  const secondaryType =
+    pokemonData.types.length < 2 ? null : pokemonData.types[1].type.name;
+console.log(secondaryType)
 
   useEffect(loadData, [currentIndex]);
 
@@ -87,6 +96,11 @@ function ExplorerView(props) {
           speed={pokemonData.stats[5].base_stat}
         />
       </div>
+      <TypeModifierDisplay
+        type1={primaryType}
+        type2={secondaryType}
+      />
+      {/* <TypeChip type='normal'/> */}
     </>
   );
 }

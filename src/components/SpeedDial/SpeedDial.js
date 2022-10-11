@@ -26,14 +26,15 @@ export default function SpeedDialTooltipOpen(props) {
   }
 
   return (
-    <Box sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 1 }}>
+    <Box sx={{ height: 330,  flexGrow: 1 }}>
       <SpeedDial
         ariaLabel='SpeedDial tooltip'
-        sx={{ position: 'absolute', bottom: 35, right: 16 }}
+        sx={{ position: 'absolute', bottom: 80, right: 16 }}
         icon={<SpeedDialIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
         open={open}
+        disableEnforceFocus
       >
         {actions.map((action) => (
           <SpeedDialAction
