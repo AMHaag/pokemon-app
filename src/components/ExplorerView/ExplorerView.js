@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import './ComponentsStyle.css';
+import './ExplorerView.styles.css';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Stack from '@mui/material/Stack';
-import TypeIcon from '../utils/TypeIcon';
-import StatBlock from '../utils/StatBlock';
-import capitalizeFirstLetter from '../helpers/capitalize';
+import {
+  TypeIcon,
+  StatBlock,
+  AvatarLarge,
+  TypeModifierDisplay,TypeChip
+} from '../utils';
+import capitalizeFirstLetter from '../../helpers/capitalize';
 
-function PokemonInspect(props) {
-  let currentIndex = props.currentIndex || 6
-  let setCurrentIndex = props.setCurrentIndex
+function ExplorerView(props) {
+  let currentIndex = props.currentIndex || 6;
+  let setCurrentIndex = props.setCurrentIndex;
+
   const [pokemonData, updatePokeData] = useState({
     name: '',
     stats: [
@@ -23,8 +28,6 @@ function PokemonInspect(props) {
     ],
     types: [{ type: { name: 'fire' } }],
   });
-  let index = currentIndex;
-  let pokemonAvatarUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index}.png`;
 
   function loadData() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${currentIndex}`)
@@ -43,7 +46,11 @@ function PokemonInspect(props) {
     return types;
   }
   let name = capitalizeFirstLetter(pokemonData.name);
-  let number = pokemonData.id
+  let number = pokemonData.id;
+  const primaryType = pokemonData.types[0].type.name;
+  const secondaryType =
+    pokemonData.types.length < 2 ? null : pokemonData.types[1].type.name;
+console.log(secondaryType)
 
   useEffect(loadData, [currentIndex]);
 
@@ -66,11 +73,7 @@ function PokemonInspect(props) {
           />
         </div>
         <div className='image-container'>
-          <img
-            className='pokemon-image'
-            src={pokemonAvatarUrl}
-            alt='Charizard'
-          />
+          <AvatarLarge index={currentIndex} name={name} />
           <div className='index-number'># {number}</div>
         </div>
       </div>
@@ -93,8 +96,13 @@ function PokemonInspect(props) {
           speed={pokemonData.stats[5].base_stat}
         />
       </div>
+      <TypeModifierDisplay
+        type1={primaryType}
+        type2={secondaryType}
+      />
+      {/* <TypeChip type='normal'/> */}
     </>
   );
 }
 
-export default PokemonInspect;
+export default ExplorerView;

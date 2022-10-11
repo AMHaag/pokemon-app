@@ -6,7 +6,7 @@ let PokeArray = { table: [] };
 
 async function saveFile(count) {
   let x = await cycle(count);
-  fs.writeFile('./src/JSON/PokemonQuickData.json', x, 'utf8', (err) => {
+  fs.writeFile('../src/JSON/PokemonQuickData.json', x, 'utf8', (err) => {
     if (err) {
       console.log(err);
     } else {
@@ -24,10 +24,10 @@ async function loadData(currentIndex, variants) {
       let data = response.data;
       model.name = data.name;
       model.index = data.order;
-      model.species = data.species;
+      // model.species = data.species;
       model.id = data.id;
       if (variants) {
-        model.isvariant = true;
+        model.hasvariant = true;
       }
       model.primaryType = data.types[0].type.name;
       if (response.data.types.length > 1) {

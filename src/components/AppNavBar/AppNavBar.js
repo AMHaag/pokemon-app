@@ -4,13 +4,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import SearchIcon from '@mui/icons-material/Search';
-import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import Paper from '@mui/material/Paper';
 
-export default function FixedBottomNavigation(props) {
+export default function AppNavBar(props) {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef(null);
   const showSearchDrawer = props.showSearchDrawer;
@@ -38,12 +37,12 @@ export default function FixedBottomNavigation(props) {
           }}
         >
           <BottomNavigationAction
-            label='Search'
+            label='Explore'
             icon={<SearchIcon />}
             onClick={toggleSearchDrawer}
           />
-          <BottomNavigationAction label='?' icon={<FavoriteIcon />} />
-          <BottomNavigationAction label='?' icon={<ArchiveIcon />} />
+          <BottomNavigationAction label='Team' icon={<FavoriteIcon />} />
+          <BottomNavigationAction label='Analyze' icon={<ArchiveIcon />} />
           <BottomNavigationAction
             label='Settings'
             icon={<SettingsApplicationsIcon />}

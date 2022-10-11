@@ -41,19 +41,3 @@
     box-shadow: 2px 3px 3px black;
 }
 
-.stat-box{
-    display:flex;
-    align-items: center;
-    justify-content:space-evenly;
-    position: relative;
-    /* top: -47px; */
-}
-@media only screen and (min-width: 600px) {
-    .stat-box{
-        justify-content: center;
-    }
-}
-.stat-row{
-    display:flex;
-
-}

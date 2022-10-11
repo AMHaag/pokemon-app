@@ -18,7 +18,7 @@ import {
   Rock,
   Steel,
   Water,
-} from '../icons/types';
+} from '../../icons/types';
 
 export default function TypeIcon(props) {
   let type = props.type.toLowerCase();

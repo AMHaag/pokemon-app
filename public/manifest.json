@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Pokémon Caddy",
+  "name": "A pocket friend to quickly look up pokemon stats",
   "icons": [
     {
       "src": "favicon.ico",
