@@ -14,6 +14,7 @@ export default function TypeChip(props){
             variant='filled'
             sx={{bgcolor:`${typeColor(type)}`}}
             label={capitalizeFirstLetter(type)}
+            size='small'
           />
       </>
     );

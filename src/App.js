@@ -8,6 +8,8 @@ import AnalyzerView from './components/AnalyzerView/AnalyzerView';
 import SearchDrawer from './components/SlideOvers/SearchDrawer';
 import { SpeedDial } from './components/SpeedDial';
 
+
+
 function App() {
   const [currentIndex, setCurrentIndex] = useState(6);
   const [showSearchDrawer, toggleSearchDrawer] = useState(false);
@@ -39,6 +41,7 @@ function App() {
       <SpeedDial search={toggleSearchDrawer} />
       <SearchDrawer
         show={showSearchDrawer}
+        toggle={toggleSearchDrawer}
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       />

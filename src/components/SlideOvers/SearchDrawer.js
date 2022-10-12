@@ -11,30 +11,21 @@ export default function SearchDrawer(props) {
   function openDrawer() {
     props.toggle(true);
   }
-  function trace(e) {
-    console.log(e);
-  }
 
   function handleNumberLookUp(e) {
     e.preventDefault();
     let valueAsInt = parseInt(e.currentTarget.value);
-    console.log(valueAsInt);
     props.setCurrentIndex(valueAsInt);
   }
 
   function handleNameChange(e, v) {
     e.preventDefault();
-    console.log(nameList.getIndexByName(v));
-    console.log(v);
     if (nameList.getIndexByName(v)) {
       props.setCurrentIndex(nameList.getIndexByName(v));
       closeDrawer();
     }
   }
 
-  function handleNameSubmit(e, v) {
-    console.log('submit' + v);
-  }
   let pokemonNames = nameList.getNameArray();
 
   return (
@@ -44,6 +35,7 @@ export default function SearchDrawer(props) {
         open={show}
         onClose={closeDrawer}
         onOpen={openDrawer}
+        // sx={{ backgroundColor: '#3d4554' }}
       >
         <ClickAwayListener
           mouseEvent='onMouseDown'
@@ -54,7 +46,7 @@ export default function SearchDrawer(props) {
             role='presentation'
             // onClick={trace}
             // onKeyDown={trace}
-            sx={{ margin: '10px 5px' }}
+            sx={{ margin: '10px 5px',  }}
           >
             <TextField
               label='National Pokédex Number'
