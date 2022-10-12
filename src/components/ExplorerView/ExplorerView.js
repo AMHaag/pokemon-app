@@ -50,7 +50,6 @@ function ExplorerView(props) {
   const primaryType = pokemonData.types[0].type.name;
   const secondaryType =
     pokemonData.types.length < 2 ? null : pokemonData.types[1].type.name;
-console.log(secondaryType)
 
   useEffect(loadData, [currentIndex]);
 

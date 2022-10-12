@@ -71,6 +71,16 @@ class pokemonType {
     }
     return typeWeaknesses;
   }
+  doubleWeaknesses() {
+    let def = this.defense;
+    let typeWeaknesses = [];
+    for (const property in def) {
+      if (def[property] === 4) {
+        typeWeaknesses.push(property);
+      }
+    }
+    return typeWeaknesses;
+  }
   resistances() {
     let def = this.defense;
     let typeResistances = [];

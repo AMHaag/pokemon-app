@@ -12,15 +12,12 @@ import Paper from '@mui/material/Paper';
 export default function AppNavBar(props) {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef(null);
-  const showSearchDrawer = props.showSearchDrawer;
-
-
-  const toggleSearchDrawer = function (e) {
+  function setCurrentView(e, string) {
     e.preventDefault();
-    if(showSearchDrawer){props.toggleSearchDrawer(false);}
-    props.toggleSearchDrawer(true)
-    console.log(showSearchDrawer);
-  };
+    props.setView(string);
+  }
+
+
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
@@ -39,13 +36,14 @@ export default function AppNavBar(props) {
           <BottomNavigationAction
             label='Explore'
             icon={<SearchIcon />}
-            onClick={toggleSearchDrawer}
+            onClick={(e)=>setCurrentView(e,'explore')}
           />
-          <BottomNavigationAction label='Team' icon={<FavoriteIcon />} />
-          <BottomNavigationAction label='Analyze' icon={<ArchiveIcon />} />
+          <BottomNavigationAction label='Team' icon={<FavoriteIcon />} onClick={(e)=>setCurrentView(e,'teams')}/>
+          <BottomNavigationAction label='Analyze' icon={<ArchiveIcon />} onClick={(e)=>setCurrentView(e,'analyzer')}/>
           <BottomNavigationAction
             label='Settings'
             icon={<SettingsApplicationsIcon />}
+            onClick={(e)=>setCurrentView(e,'settings')}
           />
         </BottomNavigation>
       </Paper>

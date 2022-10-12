@@ -1,98 +1,43 @@
 import React from 'react';
 import { calculateTypeModifiers } from '../../calculations';
-import Stack from '@mui/material/Stack';
-import TypeChip from './TypeChip';
-import { css } from '@emotion/react';
+import {immunities,doubleResistances,resistances,weaknesses,doubleWeaknesses} from './TypeModifierChecks'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function TypeModifierDisplay(props) {
   const typeObj = calculateTypeModifiers(props.type1, props.type2);
-
-  function returnChip(type) {
-    console.log(type);
-    return <TypeChip type={type} size='small' />;
-  }
-  function immunities() {
-    const immunitiesArray = typeObj.immunities();
-    if (immunitiesArray.length < 1) {
-      return null;
-    }
-    const chipArray = immunitiesArray.map(returnChip);
-    console.log(chipArray.length);
-    return (
-      <Stack
-        direction='row'
-        justifyContent='flex-start'
-        alignItems='center'
-        spacing={1}
-        mt={0}
-        ml={1}
-        sx={{ flexWrap: 'wrap' }}
-      >
-        <p>immunities:</p>
-        {chipArray}
-      </Stack>
-    );
-  }
-  function doubleResistances() {
-    const doubleResistancesArray = typeObj.doubleResistances();
-    if (doubleResistancesArray.length < 1) {
-      return null;
-    }
-    const chipArray = doubleResistancesArray.map(returnChip);
-    console.log(chipArray.length);
-    return (
-      <Stack
-        direction='row'
-        justifyContent='flex-start'
-        alignItems='center'
-        spacing={1}
-        mt={0}
-        mb={0}
-        ml={1}
-        sx={{ flexWrap: 'wrap' }}
-      >
-        <p>double resistances:</p>
-        {chipArray}
-      </Stack>
-    );
-  }
-  function resistances() {
-    const resistancesArray = typeObj.resistances();
-    if (resistancesArray.length < 1) {
-      return null;
-    }
-    const chipArray = resistancesArray.map(returnChip);
-    console.log(chipArray.length);
-    return (
-      <>
-        <Stack
-          direction='row'
-          justifyContent='flex-start'
-          alignItems='center'
-          spacing={1}
-          mt={0}
-          mb={0}
-          ml={1}
-          sx={{ flexWrap: 'wrap' }}
-        >
-          <p>resistances:</p>
-          {chipArray}
-        </Stack>
-      </>
-    );
-  }
+  const immunitiesArray = immunities(typeObj);
+  const resistancesArray = resistances(typeObj)
+const doubleResistancesArray = doubleResistances(typeObj)
+const weaknessesArray = weaknesses(typeObj)
+const doubleWeaknessesArray = doubleWeaknesses(typeObj)
   return (
     <div>
-      <h3
-        css={css`
-          margin: 0px;
-        `}
+      <Accordion sx={{ backgroundColor: '#3d4554' }}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls='type-defenses-content'
+          id='type-defenses-header'
+        >
+          <Typography>Type Defenses</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          {immunitiesArray}
+          {resistancesArray}
+          {doubleResistancesArray}
+          {weaknessesArray}
+          {doubleWeaknessesArray}
+        </AccordionDetails>
+      </Accordion>
+      {/* <h3
+        style={{margin:0}}
       >
-        Defenses:
+        Type Defenses:
       </h3>
-      {immunities()}
-      {doubleResistances()}
-      {resistances()}
+       */}
     </div>
   );
 }
