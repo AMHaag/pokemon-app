@@ -7,12 +7,15 @@ import TeamView from './components/TeamView/TeamView';
 import AnalyzerView from './components/AnalyzerView/AnalyzerView';
 import SearchDrawer from './components/SlideOvers/SearchDrawer';
 import { SpeedDial } from './components/SpeedDial';
+import { Favorite } from '@mui/icons-material';
+import FavoritesList from './components/SlideOvers/FavoritesList';
 
 
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(6);
   const [showSearchDrawer, toggleSearchDrawer] = useState(false);
+  const [showFavoritesList,toggleFavoritesList] = useState(true)
   const [currentView, setCurrentView] = useState('explore');
   console.log(currentView)
   
@@ -45,6 +48,7 @@ function App() {
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       />
+      <FavoritesList show={showFavoritesList} toggle={toggleFavoritesList} setCurrentIndex={setCurrentIndex}/>
     </div>
   );
 }
